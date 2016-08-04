@@ -2,7 +2,9 @@
 
 ***mySafebox*** is an app to store your passwords, accounts, logins and more
 
-![mySafebox](http://esaupr.github.io/img/mySafebox.png)
+![mySafebox](http://esaupr.github.io/img/mySafebox2.png)
+
+![mySafebox](http://esaupr.github.io/img/mySafebox1.png)
 
 ## Requeriments
 - [Composer](https://getcomposer.org/)
