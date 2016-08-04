@@ -50,6 +50,8 @@ Execute the server
 
 	$ php artisan serve
 
+- Directories within the storage and the bootstrap/cache directories should be writable by your web server
+
 ## To do
     ...
 
