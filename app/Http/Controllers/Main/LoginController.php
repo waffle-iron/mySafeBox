@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use mySafebox\Http\Requests;
 use mySafebox\Http\Controllers\Controller;
 
+use Auth;
 use Hash;
 use NewCrypt;
 
@@ -30,8 +31,9 @@ class LoginController extends Controller
      */
     public function index()
     {
+        $logins = Auth::user()->logins()->get();
         return view('subviews.logins')
-            ->with('logins', Login::all() );
+            ->with('logins', $logins );
     }
 
 	/**
@@ -54,7 +56,7 @@ class LoginController extends Controller
     {
         if ( ! Hash::check( $request->input('account_password'), $request->user()->password) ) {
             $item = $request->input('name');
-            $message = " could not be created, your password for mySafebox does not match.";
+            $message = "could not be created, your password for mySafebox does not match.";
 
             return redirect('/logins')
                 ->with('error', $message)
@@ -134,7 +136,37 @@ class LoginController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        if ( ! Hash::check( $request->input('account_password'), $request->user()->password) ) {
+            $item = $request->input('name');
+            $message = "could not be modified, your password for mySafebox does not match.";
+
+            return redirect('/logins')
+                ->with('error', $message)
+                ->with('item', $item);
+        }
+
+        $login = Login::findOrFail( $id );
+
+        NewCrypt::setKey(
+            $request->input('account_password')
+        );
+
+        $encrypted = NewCrypt::encrypt(
+            $request->input('password')
+        );
+        
+        $login->name = $request->input('name');
+        $login->username = $request->input('username');
+        $login->password = $encrypted;
+        $login->comment = $request->input('comment');
+        $login->save();
+
+        $item = $login->name;
+        $message = "has been modified.";
+
+        return redirect('/logins')
+            ->with('message', $message)
+            ->with('item', $item);
     }
 
     /**
@@ -155,37 +187,4 @@ class LoginController extends Controller
             ->with('message', $message)
             ->with('item', $item);
     }
-
-    /**
-     * Encrypt a password whit a key
-     *
-     * @param  string  $key, string  $password
-     * @return string
-     */
-    public function encryptPassword( $key, $password ) {
-        NewCrypt::setKey( $key );
-        $encrypted = NewCrypt::encrypt( $password );
-
-        return $encrypted;
-    }
-
-    /**
-     * Decrypt a password whit a valid key
-     *
-     * @param  string  $key, string  $password
-     * @return string
-     */
-    public function decryptPassword( $key, $password ) {
-        NewCrypt::setKey( $key );
-
-        try {
-            $decrypted = NewCrypt::decrypt( $password );
-        } catch (DecryptException $e) {
-
-            return false;
-        }
-
-        return $decrypted;
-    }
-
 }

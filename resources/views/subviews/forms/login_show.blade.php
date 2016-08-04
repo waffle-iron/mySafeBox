@@ -24,7 +24,7 @@
 				<div class="input-group">
 					<span class="input-group-addon"><i class="fa fa-lock"></i></span>
 					<input type="password" id="password_show" class="form-control" placeholder="Password" disabled>
-					<span class="input-group-addon"><a href="#" id="btn-pass-show" class="text-muted showpass" onclick="showpass()"><i class="fa fa-eye"></i></a></span>
+					<span class="input-group-addon"><a href="#" id="btn-pass-show_show" class="text-muted showpass" onclick="showpass('_show')"><i class="fa fa-eye"></i></a></span>
 				</div>
 				<br>
 

@@ -1,12 +1,12 @@
 /* Show or hide the password in the form */
-function showpass() {
-    if ( $("#password")[0].type == "password" ) {
-        $("#btn-pass-show")[0].children[0].className = "fa fa-eye-slash";
-        $("#password")[0].type = "text";
+function showpass( id ) {
+    if ( $("#password"+id)[0].type == "password" ) {
+        $("#btn-pass-show"+id)[0].children[0].className = "fa fa-eye-slash";
+        $("#password"+id)[0].type = "text";
     }
     else {
-        $("#btn-pass-show")[0].children[0].className = "fa fa-eye";
-        $("#password")[0].type = "password";
+        $("#btn-pass-show"+id)[0].children[0].className = "fa fa-eye";
+        $("#password"+id)[0].type = "password";
     }
 }
 
@@ -33,7 +33,7 @@ function progressBarAnimation( targetFunction ) {
 /* Check the user password to decrypt the data */
 function checkPassword( targetFunction ) {
 
-    showProgressBar( 0 );
+    showProgressBar( 1 );
 
     var token = $('input[name=_token]').val();
 
@@ -54,9 +54,11 @@ function checkPassword( targetFunction ) {
             targetFunction( response )
         },
         error: function( response ) {
-            $('#alert')[0].innerHTML = '<div class="alert alert-danger alert-dismissible"> <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button> <h4><i class="icon fa fa-ban"></i> Error!</h4> your password for mySafebox does not match </div> ';
-            $('#check_password')[0].value = "";
-            hiddeProgressBar()
+            progressBarAnimation( function(){
+                $('#alert')[0].innerHTML = '<div class="alert alert-danger alert-dismissible"> <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button> <h4><i class="icon fa fa-ban"></i> Error!</h4> your password for mySafebox does not match </div> ';
+                $('#check_password')[0].value = "";
+                hiddeProgressBar()
+            });
         }
     });
 }

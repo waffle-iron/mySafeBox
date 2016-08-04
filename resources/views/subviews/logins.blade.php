@@ -11,6 +11,8 @@
 	<link rel="stylesheet" href="{{asset('AdminLTE/plugins/datatables/dataTables.bootstrap.css')}}">
 	<link rel="stylesheet" href="{{asset('css/mySafebox.css')}}">
 
+	<link href="http://codegena.com/assets/css/image-preview-for-link.css" rel="stylesheet">
+
 @endsection
 
 @section('content')
@@ -98,6 +100,7 @@
 		}
 
 		function updateForm( data ) {
+			$("#login-form")[0].action = "{{url('/logins/update')}}" + "/" +data.id;
 			$("#name")[0].value = data.name;
 			$("#username")[0].value = data.username;
 			$("#password")[0].value = data.password;
@@ -113,12 +116,14 @@
 			$("#username_show")[0].value = data.username;
 			$("#password_show")[0].value = data.password;
 			$("#comment_show")[0].value = data.comment;
+
 			progressBarAnimation( function(){
 				$('#ModalFormShow').modal('show')
 			});
 		}
 
 		function cleanForm() {
+			$("#login-form")[0].action = "{{url('/logins')}}";
 			$("#name")[0].value = "";
 			$("#username")[0].value = "";
 			$("#password")[0].value = "";

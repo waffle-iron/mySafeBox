@@ -1,4 +1,4 @@
-<form action="{{url('/logins')}}" method="post">
+<form id="login-form" action="{{url('/logins')}}" method="post">
 	<div class="modal" id="ModalForm">
 		<div class="modal-dialog modal-lg">
 			<div class="modal-content">
@@ -25,7 +25,7 @@
 					<div class="input-group">
 						<span class="input-group-addon"><i class="fa fa-lock"></i></span>
 						<input type="password" name="password" id="password" class="form-control" placeholder="Password" required>
-						<span class="input-group-addon"><a href="#" id="btn-pass-show" class="text-muted showpass" onclick="showpass()"><i class="fa fa-eye"></i></a></span>
+						<span class="input-group-addon"><a href="#" id="btn-pass-show" class="text-muted showpass" onclick="showpass('')"><i class="fa fa-eye"></i></a></span>
 					</div>
 					<br>
 

@@ -22,6 +22,7 @@ Route::get('/home', 'HomeController@index');
 Route::get('/logins', 'Main\LoginController@index');
 Route::post('/logins', 'Main\LoginController@store');
 Route::post('/logins/show', 'Main\LoginController@show');
+Route::post('/logins/update/{id}', 'Main\LoginController@update');
 Route::get('/logins/delete/{id}', 'Main\LoginController@destroy');
 
 
