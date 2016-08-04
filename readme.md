@@ -23,6 +23,7 @@ Download the zip or clone the repository
 
 Enter to the project directory and install the dependeces using Composer
 
+	$ cd mySafeBox
 	$ composer install
 
 Copy the default environment file *.env.example* and rename it to *.env* to configure de app and set your application key
