@@ -1,6 +1,7 @@
 # mySafebox
 
-***mySafebox*** is an app to store your passwords, accounts, logins and more
+**mySafebox** is an app to store your passwords, accounts, logins and more.
+Currently, **mySafebox** is under ***development***.
 
 ![mySafebox](http://esaupr.github.io/img/mySafebox2.png)
 
@@ -53,6 +54,30 @@ Execute the server
 	$ php artisan serve
 
 - Directories within the storage and the bootstrap/cache directories should be writable by your web server
+
+### Creating a Desktop App
+#### Requeriments
+- Node.js >= 4
+
+#### Using Natifier
+
+- Install Natifier
+
+
+	npm install nativefier -g
+
+- Creating the desktop app
+
+
+	nativefier --name "mySafebox" [url]
+
+- Example
+
+
+	nativefier --name "mySafebox" "http://localhost:8000/"
+
+More info [Natifier](https://github.com/jiahaog/nativefier)
+
 
 ## To do
     ...
