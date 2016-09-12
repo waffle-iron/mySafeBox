@@ -61,18 +61,15 @@ Execute the server
 
 #### Using Natifier
 
-- Install Natifier
-
+Install Natifier
 
 	npm install nativefier -g
 
-- Creating the desktop app
-
+Creating the desktop app
 
 	nativefier --name "mySafebox" [url]
 
-- Example
-
+Example
 
 	nativefier --name "mySafebox" "http://localhost:8000/"
 
