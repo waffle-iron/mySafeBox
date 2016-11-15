@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/EsauPR/mySafeBox.png?label=ready&title=Ready)](https://waffle.io/EsauPR/mySafeBox)
 # mySafebox
 
 **mySafebox** is an app to store your passwords, accounts, logins and more.
